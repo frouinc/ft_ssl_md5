@@ -3,9 +3,9 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfrouin <cfrouin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/17 16:53:18 by kda-silv          #+#    #+#             */
+/*   Created: 2017/05/17 16:53:18 by cfrouin          #+#    #+#             */
 /*   Updated: 2017/12/13 18:42:22 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -17,6 +17,8 @@
 ** includes
 */
 
+# include <errno.h>
+# include <fcntl.h>
 # include <stdint.h>
 # include <string.h>
 # include <stdlib.h>
@@ -105,6 +107,7 @@ void				*ft_error_close_str_void(char const *str, int fd);
 void				*ft_error_close_void(int fd);
 int					ft_error_str_int(char const *str);
 void				*ft_error_str_void(char const *str);
+float				ft_fabs(float i);
 int					ft_factorial(int nb);
 void				ft_free_tab(char ***tab);
 int					ft_intlen(int nbr);
@@ -153,6 +156,7 @@ int					ft_putstr(char const *s);
 int					ft_putstr_fd(char const *s, int fd);
 int					ft_puttab(char **tab);
 int					ft_puttab_fd(char **tab, int fd);
+char				*ft_read_file(char *filename);
 char				*ft_realloc_str(char *ptr, size_t size);
 char				**ft_split(char *str, int count, int words, int size);
 int					ft_sqrt(int nb);
@@ -184,6 +188,7 @@ char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *str, const char *to_find);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
+char				*ft_strtoupper(char *str);
 char				*ft_strtrim(char const *s);
 int					ft_tolower(int c);
 int					ft_toupper(int c);

@@ -6,17 +6,25 @@
 #    By: cyrillefrouin <cyrillefrouin@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 15:07:13 by cyrillef          #+#    #+#              #
-#    Updated: 2019/12/11 12:13:21 by cyrillefrou      ###   ########.fr        #
+#    Updated: 2020/06/18 12:28:57 by cyrillefrou      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 GCC					=	gcc
 
-NAME				=	ft_ssl_md5
+NAME				=	ft_ssl
 
 SRCS_DIR			=	srcs/
 
-SRCS				=	main.c
+SRCS				=	main.c \
+						params.c \
+						op.c \
+						md5.c \
+						md5bis.c \
+						sha256.c \
+						sha256bis.c \
+						sha256ter.c \
+						error.c
 
 SRCS_FULL			=	$(addprefix $(SRCS_DIR), $(SRCS))
 

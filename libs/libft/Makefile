@@ -3,9 +3,9 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+         #
+#    By: cfrouin <cfrouin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/02/08 16:44:57 by kda-silv          #+#    #+#              #
+#    Created: 2017/02/08 16:44:57 by cfrouin          #+#    #+#              #
 #    Updated: 2017/12/17 12:48:20 by cfrouin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -84,6 +84,7 @@ SRCS	=	ft_printf/ft_printf.c \
 			ft_strnequ.c \
 			ft_strsub.c \
 			ft_strjoin.c \
+			ft_strtoupper.c \
 			ft_strtrim.c \
 			ft_strsplit.c \
 			ft_itoa.c \
@@ -97,6 +98,7 @@ SRCS	=	ft_printf/ft_printf.c \
 			ft_putstr_fd.c \
 			ft_putendl_fd.c \
 			ft_putnbr_fd.c \
+			ft_read_file.c \
 			ft_lstnew.c \
 			ft_lstdelone.c \
 			ft_lstdel.c \
@@ -108,6 +110,7 @@ SRCS	=	ft_printf/ft_printf.c \
 			ft_isnumber.c \
 			ft_pow.c \
 			ft_abs.c \
+			ft_fabs.c \
 			ft_realloc_str.c \
 			ft_factorial.c \
 			ft_sqrt.c \
