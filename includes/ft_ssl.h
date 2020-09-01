@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ssl.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyrillefrouin <cyrillefrouin@student.42    +#+  +:+       +#+        */
+/*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/11 12:28:42 by cyrillefrou       #+#    #+#             */
-/*   Updated: 2020/06/18 12:29:51 by cyrillefrou      ###   ########.fr       */
+/*   Created: 2020/06/18 13:31:29 by cfrouin           #+#    #+#             */
+/*   Updated: 2020/06/20 11:28:10 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ typedef struct			s_data
 	int					quiet;
 	int					print;
 	int					reverse;
-	int					hadFile;
+	int					had_file;
+	int					displayed;
 }						t_data;
 
 typedef struct			s_md5
@@ -102,13 +103,14 @@ int						params(int ac, char **av, t_data *data);
 /*
 ** error.c
 */
-void					md5_error(char *message, int errnoDisplay);
+void					md5_error(char *message, int errno_display);
 
 /*
 ** op.c
 */
 void					call_operation_string(t_data *data, unsigned char *str);
-void					call_operation_file(t_data *data, char *filename, unsigned char *str);
+void					call_operation_file(t_data *data, char *filename,
+	unsigned char *str);
 
 /*
 ** md5.c
@@ -129,17 +131,31 @@ void					sha256(unsigned char *input);
 /*
 ** sha256bis.c
 */
-uint32_t				right_rot(uint32_t value, unsigned int count);
-void					init_buf_state(t_buffer_state *state, const void *input,
-	size_t len);
-int						calc_chunk(uint8_t chunk[CHUNK_SIZE],
+void					sha256_init_buf_state(t_buffer_state *state,
+	const void *input, size_t len);
+int						sha256_calc_chunk(uint8_t chunk[CHUNK_SIZE],
 	t_buffer_state *state);
-void					fill_hash(uint8_t hash[32], uint32_t h[8]);
+void					sha256_fill_hash(uint8_t hash[32], uint32_t h[8]);
 
 /*
-** sha256ter.c
+** sha224.c
 */
+void					sha224(unsigned char *input);
 
-void					hash_to_string(char string[65], const uint8_t hash[32]);
+/*
+** sha224bis.c
+*/
+void					sha224_init_buf_state(t_buffer_state *state,
+	const void *input, size_t len);
+int						sha224_calc_chunk(uint8_t chunk[CHUNK_SIZE],
+	t_buffer_state *state);
+void					sha224_fill_hash(uint8_t hash[32], uint32_t h[8]);
+
+/*
+** util.c
+*/
+void					hash_to_string(char string[65], const uint8_t hash[32],
+	size_t len);
+uint32_t				right_rot(uint32_t value, unsigned int count);
 
 #endif

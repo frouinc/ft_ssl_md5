@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:27:29 by cfrouin           #+#    #+#             */
-/*   Updated: 2020/06/18 12:38:16 by cfrouin          ###   ########.fr       */
+/*   Updated: 2020/06/20 14:26:32 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void			init_gk(void)
 	i = 0;
 	while (i < 64)
 	{
-		g_k[i] = pow(2, 32) * fabs(sin(i + 1));
+		g_k[i] = ft_pow(2, 32) * fabs(sin(i + 1));
 		i++;
 	}
 	calculated = 1;

@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:44:13 by cfrouin           #+#    #+#             */
-/*   Updated: 2020/06/18 12:39:25 by cfrouin          ###   ########.fr       */
+/*   Updated: 2020/06/18 14:44:18 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void			call_operation_string(t_data *data, unsigned char *str)
 			data->c_op->operation(str);
 			ft_printf("\n");
 		}
+		data->displayed = 1;
 	}
 }
 
@@ -56,5 +57,6 @@ void			call_operation_file(t_data *data, char *filename,
 			data->c_op->operation(str);
 			ft_printf("\n");
 		}
+		data->displayed = 1;
 	}
 }

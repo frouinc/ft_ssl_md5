@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sha256bis.c                                        :+:      :+:    :+:   */
+/*   sha224bis.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 12:12:25 by cfrouin           #+#    #+#             */
-/*   Updated: 2020/06/18 12:39:40 by cfrouin          ###   ########.fr       */
+/*   Updated: 2020/06/20 11:27:04 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
-uint32_t				right_rot(uint32_t value, unsigned int count)
-{
-	return (value >> count | value << (32 - count));
-}
-
-void					init_buf_state(t_buffer_state *state, const void *input,
-	size_t len)
+void					sha224_init_buf_state(t_buffer_state *state,
+	const void *input, size_t len)
 {
 	state->p = input;
 	state->len = len;
@@ -54,7 +49,7 @@ void					calc_chunk2(size_t space_in_chunk,
 		memset(chunk, 0x00, space_in_chunk);
 }
 
-int						calc_chunk(uint8_t chunk[CHUNK_SIZE],
+int						sha224_calc_chunk(uint8_t chunk[CHUNK_SIZE],
 	t_buffer_state *state)
 {
 	size_t				space_in_chunk;
@@ -83,7 +78,7 @@ int						calc_chunk(uint8_t chunk[CHUNK_SIZE],
 	return (1);
 }
 
-void					fill_hash(uint8_t hash[32], uint32_t h[8])
+void					sha224_fill_hash(uint8_t hash[32], uint32_t h[8])
 {
 	int					i;
 	int					j;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtoupper.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyrillefrouin <cyrillefrouin@student.42    +#+  +:+       +#+        */
+/*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/18 11:28:04 by cyrillefrou       #+#    #+#             */
-/*   Updated: 2020/06/18 11:32:00 by cyrillefrou      ###   ########.fr       */
+/*   Created: 2020/06/18 13:44:47 by cfrouin           #+#    #+#             */
+/*   Updated: 2020/06/18 13:45:03 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

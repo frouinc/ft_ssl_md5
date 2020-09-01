@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sha256.c                                           :+:      :+:    :+:   */
+/*   sha224.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 12:12:25 by cfrouin           #+#    #+#             */
-/*   Updated: 2020/06/18 12:39:36 by cfrouin          ###   ########.fr       */
+/*   Updated: 2020/06/20 11:46:43 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static const uint32_t	g_k[] = {
 	0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
 };
 
-void					calc_word2(t_words_calc *wc, uint32_t w, uint32_t ah[8],
+static void				calc_word2(t_words_calc *wc, uint32_t w, uint32_t ah[8],
 	uint32_t kva)
 {
 	wc->s1 = right_rot(ah[4], 6) ^ right_rot(ah[4], 11) ^ right_rot(ah[4], 25);
@@ -50,7 +50,7 @@ void					calc_word2(t_words_calc *wc, uint32_t w, uint32_t ah[8],
 	ah[0] = wc->temp1 + wc->temp2;
 }
 
-void					calc_word_rot(t_sha256 *se, t_words_calc *wc)
+static void				calc_word_rot(t_sha256 *se, t_words_calc *wc)
 {
 	wc->s0 = right_rot(se->w[(se->j + 1) & 0xf], 7)
 	^ right_rot(se->w[(se->j + 1) & 0xf], 18)
@@ -62,7 +62,7 @@ void					calc_word_rot(t_sha256 *se, t_words_calc *wc)
 	+ wc->s1;
 }
 
-void					calc_word(t_sha256 *se, t_words_calc *wc)
+static void				calc_word(t_sha256 *se, t_words_calc *wc)
 {
 	se->i = -1;
 	while (++se->i < 4)
@@ -84,19 +84,19 @@ void					calc_word(t_sha256 *se, t_words_calc *wc)
 	}
 }
 
-void					init_h(uint32_t h[8])
+static void				init_h(uint32_t h[8])
 {
-	h[0] = 0x6a09e667;
-	h[1] = 0xbb67ae85;
-	h[2] = 0x3c6ef372;
-	h[3] = 0xa54ff53a;
-	h[4] = 0x510e527f;
-	h[5] = 0x9b05688c;
-	h[6] = 0x1f83d9ab;
-	h[7] = 0x5be0cd19;
+	h[0] = 0xc1059ed8;
+	h[1] = 0x367cd507;
+	h[2] = 0x3070dd17;
+	h[3] = 0xf70e5939;
+	h[4] = 0xffc00b31;
+	h[5] = 0x68581511;
+	h[6] = 0x64f98fa7;
+	h[7] = 0xbefa4fa4;
 }
 
-void					sha256(unsigned char *input)
+void					sha224(unsigned char *input)
 {
 	t_sha256		se;
 	uint8_t			chunk[64];
@@ -105,8 +105,8 @@ void					sha256(unsigned char *input)
 
 	se.len = ft_strlen((char *)input);
 	init_h(se.h);
-	init_buf_state(&state, input, se.len);
-	while (calc_chunk(chunk, &state))
+	sha224_init_buf_state(&state, input, se.len);
+	while (sha224_calc_chunk(chunk, &state))
 	{
 		se.p = chunk;
 		se.i = -1;
@@ -117,7 +117,6 @@ void					sha256(unsigned char *input)
 		while (++se.i < 8)
 			se.h[se.i] += se.ah[se.i];
 	}
-	fill_hash(se.hash, se.h);
-	hash_to_string(se.hash_string, se.hash);
-	ft_putstr(se.hash_string);
+	sha224_fill_hash(se.hash, se.h);
+	hash_to_string(se.hash_string, se.hash, 28);
 }

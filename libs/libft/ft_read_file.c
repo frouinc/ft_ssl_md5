@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/18 12:50:06 by cfrouin           #+#    #+#             */
-/*   Updated: 2020/06/18 12:53:52 by cfrouin          ###   ########.fr       */
+/*   Created: 2020/06/18 13:44:06 by cfrouin           #+#    #+#             */
+/*   Updated: 2020/06/18 15:35:33 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ char			*ft_read_file(char *filename)
 
 	if ((fd = open(filename, O_RDONLY)) == -1)
 	{
-		ft_printf("%s\n", strerror(errno));
+		ft_printf("%s: %s\n", filename, strerror(errno));
 		return (NULL);
 	}
 	str = ft_strdup("");
 	buff[49] = 0;
-	ft_strclr(buff);
+	ft_memset(buff, 0, 50);
 	while ((ret = read(fd, buff, 49)) > 0)
 	{
 		buff[49] = 0;

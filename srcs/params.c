@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 12:34:35 by cfrouin           #+#    #+#             */
-/*   Updated: 2020/06/18 12:52:25 by cfrouin          ###   ########.fr       */
+/*   Updated: 2020/09/01 11:06:18 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void			use_input(t_data *data)
 
 	str = ft_strdup("");
 	buff[49] = 0;
-	ft_strclr(buff);
+	ft_memset(buff, 0, 50);
 	while ((ret = read(0, buff, 49)) > 0)
 	{
 		buff[49] = 0;
@@ -32,13 +32,13 @@ void			use_input(t_data *data)
 		ft_strclr(buff);
 		free(tmp);
 	}
-	if (ret == -1)
+	if (ret != -1)
 	{
-		free(str);
-		return ;
+		data->c_op->operation((unsigned char *)str);
+		ft_putchar('\n');
 	}
-	data->c_op->operation((unsigned char *)str);
-	ft_putchar('\n');
+	free(str);
+	return ;
 }
 
 static int		check_option(int i, int ac, char **av, t_data *data)
@@ -47,6 +47,7 @@ static int		check_option(int i, int ac, char **av, t_data *data)
 	{
 		data->print = 1;
 		use_input(data);
+		data->displayed = 1;
 	}
 	if (ft_strcmp(av[i], "-q") == 0)
 		data->quiet = 1;
@@ -66,9 +67,9 @@ static int		check_param(int i, int ac, char **av, t_data *data)
 {
 	char		*str;
 
-	if (data->hadFile == 0 && av[i][0] == '-')
+	if (data->had_file == 0 && av[i][0] == '-')
 		return (check_option(i, ac, av, data));
-	data->hadFile = 1;
+	data->had_file = 1;
 	if ((str = ft_read_file(av[i])) == NULL)
 		return (-2);
 	call_operation_file(data, av[i], (unsigned char *)str);
@@ -98,15 +99,8 @@ int				params(int ac, char **av, t_data *data)
 	int			i;
 	int			tmp;
 
-	if (ac >= 2 && find_op(data, av[1]) == -1)
-	{
+	if (find_op(data, av[1]) == -1)
 		return (-1);
-	}
-	if (ac == 2)
-	{
-		use_input(data);
-		return (1);
-	}
 	i = 2;
 	while (i < ac)
 	{
@@ -114,5 +108,7 @@ int				params(int ac, char **av, t_data *data)
 			return (-1);
 		i += (tmp == -2) ? 1 : tmp;
 	}
+	if (data->displayed == 0)
+		use_input(data);
 	return (1);
 }

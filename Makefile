@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cyrillefrouin <cyrillefrouin@student.42    +#+  +:+       +#+         #
+#    By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 15:07:13 by cyrillef          #+#    #+#              #
-#    Updated: 2020/06/18 12:28:57 by cyrillefrou      ###   ########.fr        #
+#    Updated: 2020/06/20 11:11:55 by cfrouin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,13 @@ SRCS_DIR			=	srcs/
 SRCS				=	main.c \
 						params.c \
 						op.c \
-						md5.c \
-						md5bis.c \
-						sha256.c \
-						sha256bis.c \
-						sha256ter.c \
+						md5/md5.c \
+						md5/md5bis.c \
+						sha256/sha256.c \
+						sha256/sha256bis.c \
+						sha224/sha224.c \
+						sha224/sha224bis.c \
+						util.c \
 						error.c
 
 SRCS_FULL			=	$(addprefix $(SRCS_DIR), $(SRCS))
@@ -39,7 +41,7 @@ all:				libft $(NAME)
 					@echo "\033[K\033[34mFdf :\033[0m [ Compiling :\033[33m $^\033[0m]\033[1A"
 
 $(NAME):			$(OBJS)
-					@$(GCC) $(OBJS) -o $(NAME) -L./libs/libft -lft -fsanitize=address
+					@$(GCC) $(OBJS) -o $(NAME) -L./libs/libft -lft
 					@echo "\033[K\033[32m=========FT_SSL_MD5=============\033[0m"
 					@echo "\033[34mCompiling\033[0m" [ $(NAME) ] "\033[K\033[32mSuccessful\033[00m"
 					@echo "\033[32m================================\033[00m"
