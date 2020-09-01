@@ -1,6 +1,6 @@
 make
-rm my_result.log
-rm good_result.log
+rm -f my_result.log
+rm -f good_result.log
 
 header()
 {

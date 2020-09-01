@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 12:14:02 by cfrouin           #+#    #+#             */
-/*   Updated: 2020/06/20 12:23:14 by cfrouin          ###   ########.fr       */
+/*   Updated: 2020/09/01 11:32:55 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,20 @@ int				add_operation(t_data *data, char name[],
 	return (1);
 }
 
+static void		init_data(t_data *data)
+{
+	data->c_op = 0;
+	data->quiet = 0;
+	data->print = 0;
+	data->reverse = 0;
+	data->had_file = 0;
+	data->displayed = 0;
+	data->op_list = NULL;
+	add_operation(data, "md5", md5);
+	add_operation(data, "sha256", sha256);
+	add_operation(data, "sha224", sha224);
+}
+
 int				main(int ac, char **av)
 {
 	t_data		data;
@@ -44,16 +58,7 @@ int				main(int ac, char **av)
 		ft_printf("usage: ft_ssl command [command opts] [command args]\n");
 		return (-1);
 	}
-	data.c_op = 0;
-	data.quiet = 0;
-	data.print = 0;
-	data.reverse = 0;
-	data.had_file = 0;
-	data.displayed = 0;
-	data.op_list = NULL;
-	add_operation(&data, "md5", md5);
-	add_operation(&data, "sha256", sha256);
-	add_operation(&data, "sha224", sha224);
+	init_data(&data);
 	if (params(ac, av, &data) == -1)
 	{
 		ft_printf("ft_ssl: Error: '%s' is an invalid command.\n", av[1]);

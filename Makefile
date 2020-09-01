@@ -6,7 +6,7 @@
 #    By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 15:07:13 by cyrillef          #+#    #+#              #
-#    Updated: 2020/06/20 11:11:55 by cfrouin          ###   ########.fr        #
+#    Updated: 2020/09/01 11:18:25 by cfrouin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,8 @@ libft:
 
 clean:
 					@rm -f $(OBJS)
+					@rm -f good_result.log
+					@rm -f my_result.log
 					@echo "\033[K\033[31m=========FT_SSL_MD5=============\033[0m"
 					@echo "\033[31mCleaning\033[00m  " [ "*.o" ] "  \033[32mComplete\033[00m"
 					@echo "\033[K\033[31m=============================\033[0m"

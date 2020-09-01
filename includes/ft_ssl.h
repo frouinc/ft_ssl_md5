@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 13:31:29 by cfrouin           #+#    #+#             */
-/*   Updated: 2020/06/20 11:28:10 by cfrouin          ###   ########.fr       */
+/*   Updated: 2020/09/01 11:16:31 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,8 +154,7 @@ void					sha224_fill_hash(uint8_t hash[32], uint32_t h[8]);
 /*
 ** util.c
 */
-void					hash_to_string(char string[65], const uint8_t hash[32],
-	size_t len);
+void					print_hash(const uint8_t hash[32], size_t len);
 uint32_t				right_rot(uint32_t value, unsigned int count);
 
 #endif

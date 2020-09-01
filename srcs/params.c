@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 12:34:35 by cfrouin           #+#    #+#             */
-/*   Updated: 2020/09/01 11:06:18 by cfrouin          ###   ########.fr       */
+/*   Updated: 2020/09/01 11:31:36 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ static int		check_option(int i, int ac, char **av, t_data *data)
 	if (ft_strcmp(av[i], "-s") == 0)
 	{
 		if (i + 1 >= ac)
-			return (-1);
+		{
+			ft_printf("%s: -s requires an argument.\n", av[0]);
+			return (-3);
+		}
 		call_operation_string(data, (unsigned char *)av[i + 1]);
 		return (2);
 	}
@@ -104,8 +107,8 @@ int				params(int ac, char **av, t_data *data)
 	i = 2;
 	while (i < ac)
 	{
-		if ((tmp = check_param(i, ac, av, data)) == -1)
-			return (-1);
+		if ((tmp = check_param(i, ac, av, data)) == -1 || tmp == -3)
+			return (tmp);
 		i += (tmp == -2) ? 1 : tmp;
 	}
 	if (data->displayed == 0)

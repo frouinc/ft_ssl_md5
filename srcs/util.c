@@ -6,14 +6,13 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 12:12:25 by cfrouin           #+#    #+#             */
-/*   Updated: 2020/06/20 11:46:37 by cfrouin          ###   ########.fr       */
+/*   Updated: 2020/09/01 11:17:17 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
-void			hash_to_string(char string[65], const uint8_t hash[32],
-	size_t len)
+void			print_hash(const uint8_t hash[32], size_t len)
 {
 	size_t		i;
 
@@ -25,7 +24,7 @@ void			hash_to_string(char string[65], const uint8_t hash[32],
 	}
 }
 
-uint32_t				right_rot(uint32_t value, unsigned int count)
+uint32_t		right_rot(uint32_t value, unsigned int count)
 {
 	return (value >> count | value << (32 - count));
 }

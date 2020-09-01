@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 12:12:25 by cfrouin           #+#    #+#             */
-/*   Updated: 2020/06/20 11:46:43 by cfrouin          ###   ########.fr       */
+/*   Updated: 2020/09/01 11:17:18 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,5 @@ void					sha224(unsigned char *input)
 			se.h[se.i] += se.ah[se.i];
 	}
 	sha224_fill_hash(se.hash, se.h);
-	hash_to_string(se.hash_string, se.hash, 28);
+	print_hash(se.hash, 28);
 }
